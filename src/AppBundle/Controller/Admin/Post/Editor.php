@@ -31,8 +31,12 @@ class Editor extends Controller
     
     private function showEditor($id)
     {
-        $entityManager  = $this->getDoctrine()->getManager();
-        $post           = (empty($id)) ? new Post() : $entityManager->getRepository('AppBundle:Post')->find($id);
+        try {
+            $entityManager  = $this->getDoctrine()->getManager();
+            $post           = (empty($id)) ? new Post() : $entityManager->getRepository('AppBundle:Post')->find($id);
+        } catch (Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+        }
         
         return $this->render('admin/post/editor.html.twig', [
             'post' => $post
@@ -44,16 +48,20 @@ class Editor extends Controller
      */
     public function saveAction(Request $request)
     {
-        $id = $request->request->get('id');
-        $entityManager = $this->getDoctrine()->getManager();
-        $post = (empty($id)) ? new Post() : $entityManager->getRepository('AppBundle:Post')->find($id);
-        
-        $post->setStatus($request->request->get('status'));
-        $post->setTitle($request->request->get('title'));
-        $post->setContent($request->request->get('content'));
-        
-        $entityManager->persist($post);
-        $entityManager->flush();
+        try {
+            $id              = $request->request->get('id');
+            $entityManager   = $this->getDoctrine()->getManager();
+            $post 	         = (empty($id)) ? new Post() : $entityManager->getRepository('AppBundle:Post')->find($id);
+            
+            $post->setStatus($request->request->get('status'));
+            $post->setTitle($request->request->get('title'));
+            $post->setContent($request->request->get('content'));
+            
+            $entityManager->persist($post);
+            $entityManager->flush();
+        } catch (Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+        }
         
         return $this->redirectToRoute('admin_post_overview');
     }

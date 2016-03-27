@@ -19,11 +19,15 @@ class Overview extends Controller
      */
     public function indexAction(Request $request, $pageIndex)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('AppBundle:Post');
+        try {
+            $repository = $this->getDoctrine()->getManager()->getRepository('AppBundle:Post');
         
-        $pagination = new Pagination($repository);
-        $pagination->setPageIndex($pageIndex);
-        $pagination->setMaxPageItems(self::OVERVIEW_ITEMS_LIMIT);
+            $pagination = new Pagination($repository);
+            $pagination->setPageIndex($pageIndex);
+            $pagination->setMaxPageItems(self::OVERVIEW_ITEMS_LIMIT);
+        } catch (Exception $e) {
+            $this->addFlash('error', $e->getMessage());
+        }
         
         return $this->render('admin/post/overview.html.twig', [
             'list_posts' => $pagination->getPageItems(),
@@ -37,11 +41,15 @@ class Overview extends Controller
     public function deleteAction($id)
     {
         if (!empty($id)) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $post 	       = $entityManager->getRepository('AppBundle:Post')->find($id);
-            
-            $entityManager->remove($post);
-            $entityManager->flush();
+            try {
+                $entityManager = $this->getDoctrine()->getManager();
+                $post 	       = $entityManager->getRepository('AppBundle:Post')->find($id);
+                
+                $entityManager->remove($post);
+                $entityManager->flush();
+            } catch (Exception $e) {
+                $this->addFlash('error', $e->getMessage());
+            }
         }
         
         return $this->redirectToRoute('admin_post_overview');

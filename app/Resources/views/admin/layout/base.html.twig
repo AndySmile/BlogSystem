@@ -44,6 +44,10 @@
     </div>
     
     <div class="container">
+        {% for curr_message in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger">{{ curr_message }}</div> 
+        {% endfor %}
+        
         {% block inner_body %}{% endblock %}
     </div>
 {% endblock %}
