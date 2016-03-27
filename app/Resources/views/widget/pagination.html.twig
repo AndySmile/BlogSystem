@@ -1,0 +1,9 @@
+<nav>
+    <ul class="pagination">
+        {% for i in 1..pagination.getNumPages() %}
+            <li>
+                <a href="{{ path(url_path, {'pageIndex': i - 1}) }}">{{ i }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
