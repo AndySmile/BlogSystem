@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * BlogSystem - Login as the default controller.
  *
- * @version 	0.1.0 22-Mar-16
+ * @version 	0.1.1 27-Mar-16
  * @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
  */
 class DefaultController extends Controller
@@ -18,7 +18,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('login/index.html.twig', [
+        return $this->render('page/login.html.twig', [
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir') . '/..')
         ]);
     }

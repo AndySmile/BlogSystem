@@ -1,3 +1,7 @@
+{##
+ # @version     0.3.0 27-Mar-16
+ # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
+ #}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,6 +26,10 @@
                 {% block inner_body %}{% endblock %}
             </div>
         {% endblock %}
+        
+        <footer>
+            Copyright (c) 2016 by Andy Liebke. All rights reserved. (<a href="http://andysmiles4games.com" target="_blank">http://andysmiles4games.com</a>) - <a href="{{ path('credits') }}">Credits</a>
+        </footer>
         
         <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
