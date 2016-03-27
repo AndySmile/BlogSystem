@@ -57,36 +57,50 @@ class Pagination
      * Assigns page index.
      *
      * @param int $pageIndex - current page index
+     *
+     * @return Pagination - this instance of this class
      */
     public function setPageIndex($pageIndex)
     {
         $this->pageIndex = (int)$pageIndex;
+        
+        return $this;
     }
     
     /**
      * Assigns max amount of items per page.
      *
      * @param int $maxPageItems - max amount of items per page
+     *
+     * @return Pagination - this instance of this class
      */
     public function setMaxPageItems($maxPageItems)
     {
         $this->maxPageItems = (int)$maxPageItems;
+        
+        return $this;
     }
     
     /**
      * Assigns repository to this pagination object.
      *
      * @param PaginationRepositoryInterface $repository - storage that includes all the listing items
+     *
+     * @return Pagination - this instance of this class
      */
     public function setRepository(PaginationRepositoryInterface $repository)
     {
         $this->repository = $repository;
+        
+        return $this;
     }
     
     /**
      * Calculates all the data to handle the pages for the repository.
      *
      * @throws LogicException - in case that no repository was assigned to this pagination object
+     *
+     * @return Pagination - this instance of this class
      */
     public function calculate()
     {
@@ -96,6 +110,8 @@ class Pagination
         
         $this->total    = $this->repository->getTotalNum();
         $this->numPages = ($this->total > 0) ? ceil((float)$this->total / (float)$this->maxPageItems) : 0;
+        
+        return $this;
     }
     
     /**
