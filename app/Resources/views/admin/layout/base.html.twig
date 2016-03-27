@@ -1,5 +1,5 @@
 {##
- # @version 	0.1.0 26-Mar-16
+ # @version 	0.2.0 27-Mar-16
  # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
  #}
 {% extends 'layout/base.html.twig' %}
@@ -31,6 +31,12 @@
                                 <a href="{{ path('admin_post_overview', {'pageIndex': 0}) }}">Overview</a>
                             </li>
                         </ul>
+                    </li>
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ path('logout') }}">Logout</a>
                     </li>
                 </ul>
             </div>

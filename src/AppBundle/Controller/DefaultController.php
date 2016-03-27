@@ -18,8 +18,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('page/login.html.twig', [
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir') . '/..')
-        ]);
+        $auth = $this->get('security.authentication_utils');
+        
+        $listErrors = $auth->getLastAuthenticationError();
+        
+        /*var_dump($listErrors);*/
+        
+        return $this->render('page/login.html.twig', []);
     }
 }

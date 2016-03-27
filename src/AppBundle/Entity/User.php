@@ -46,6 +46,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
       */
      private $password = '';
      
+     public function setUsername($username)
+     {
+         $this->email = $username;
+         
+         return $this;
+     }
+     
      public function getUsername()
      {
          return $this->email;
@@ -63,7 +70,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
      
      public function getRoles()
      {
-         return ['ROLE_USER'];
+         return ['ROLE_ADMIN'];
      }
      
      public function eraseCredentials()
@@ -148,29 +155,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function getNickname()
     {
         return $this->nickname;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
