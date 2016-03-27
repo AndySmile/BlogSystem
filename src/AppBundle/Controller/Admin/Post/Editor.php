@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Post;
 
 /**
+ * BlogSystem - Admin Editor Controller.
+ *
  * @author      Andy Liebke <info@andysmiles4games.com>
  * @version     0.2.0 27-Mar-16
  * @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
@@ -14,6 +16,14 @@ use AppBundle\Entity\Post;
 class Editor extends Controller
 {
     /**
+     * Displays the empty blog post editor.
+     *
+     * This form creates a new blog post.
+     * 
+     * @param Request $request - HTTP request object
+     *
+     * @return Response - includes rendered HTML content from the twig template
+     *
      * @Route("/admin/post/editor", name="admin_post_editor")
      */
     public function indexAction(Request $request)
@@ -22,6 +32,12 @@ class Editor extends Controller
     }
     
     /**
+     * Displays editor form to alter a blog post entry.
+     *
+     * @param int $id - Blog post ID
+     *
+     * @return Response - includes rendered HTML content from the twig template
+     *
      * @Route("/admin/post/editor/edit/{id}", name="admin_post_edit")
      */
     public function editAction($id)
@@ -29,6 +45,15 @@ class Editor extends Controller
         return $this->showEditor($id);
     }
     
+    /**
+     * Displays editor form.
+     *
+     * Collects blog post data and renders the template to a HTML response object.
+     *
+     * @param int $id - Blog post ID
+     *
+     * @return Response - includes rendered HTML content from the twig template
+     */
     private function showEditor($id)
     {
         try {
@@ -44,6 +69,12 @@ class Editor extends Controller
     }
     
     /**
+     * Saves blog post data into database.
+     *
+     * @param Request $request - HTTP request object
+     *
+     * @return Response - redirection response to the blog post overview page
+     *
      * @Route("/admin/post/editor/save", name="admin_post_editor_save")
      */
     public function saveAction(Request $request)
