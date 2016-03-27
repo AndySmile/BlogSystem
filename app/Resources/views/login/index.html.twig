@@ -4,6 +4,20 @@
     Please, sign in!
 {% endblock %}
 
-{% block body %}
-    this page will show you an awesome login screen!
+{% block inner_body %}
+    <h1>Login</h1>
+    
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="form-login-email">Email:</label>
+            <input id="form-login-email" type="text" name="" placeholder="Your Email address!" class="form-control"/>
+        </div>
+        
+        <div class="form-group">
+            <label for="form-login-password">Password:</label>
+            <input id="form-login-password" type="password" name="" placeholder="Your Password" class="form-control"/>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
 {% endblock %}
