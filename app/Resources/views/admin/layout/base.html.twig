@@ -1,0 +1,43 @@
+{##
+ # @version 	0.1.0 26-Mar-16
+ # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
+ #}
+{% extends 'layout/base.html.twig' %}
+
+{% block body %}
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                </button>
+                
+                <a href="" class="navbar-brand">{% block menu_title %}Blog System{% endblock %}</a>
+            </div>
+            
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Postmanager <span class="caret"></span>
+                        </a>
+                        
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ path('admin_post_editor') }}">New Post<a/>
+                            </li>
+                            
+                            <li>
+                                <a href="{{ path('admin_post_overview', {'pageIndex': 0}) }}">Overview</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        {% block inner_body %}{% endblock %}
+    </div>
+{% endblock %}
