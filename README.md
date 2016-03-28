@@ -29,3 +29,16 @@ This system is based on those following third party libraries/Frameworks:
 
 You don't have to worry about how to install them into your project because those will
 be added via CDN url for a better front page performance.
+
+## Branches
+
+This project is separated into two branches:
+
+###master 
+
+Includes the most stable version
+
+###dev 
+
+Includes some new features but isn't tested yet and therefore it's possible that it includes 
+some bugs. It isn't recommended to use this version in your production environment.
