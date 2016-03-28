@@ -1,0 +1,17 @@
+{##
+ # BlogSystem - Pagination Widget Template.
+ #
+ # @author      Andy Liebke <info@andysmiles4games.com>
+ # @version     0.1.0 27-Mar-16
+ # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
+ #}
+ 
+<nav>
+    <ul class="pagination">
+        {% for i in 1..pagination.getNumPages() %}
+            <li>
+                <a href="{{ path(url_path, {'pageIndex': i - 1}) }}">{{ i }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

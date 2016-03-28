@@ -1,0 +1,49 @@
+{##
+ # BlogSystem - Blog Post Editor Template.
+ #
+ # @author      Andy Liebke <info@andysmiles4games.com> 
+ # @version 	0.2.0 27-Mar-16
+ # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
+ #}
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block menu_title %}
+    {{ parent() }} - Post Editor
+{% endblock %}
+
+{% block inner_body %}
+    <form action="{{ path('admin_post_editor_save') }}" method="post">
+        <input type="hidden" name="id" value="{{ post.id }}"/>
+    
+        <div class="form-group">
+            <label for="editor-status">Status:</label>
+            
+            <select id="form-status" name="status" class="form-control">
+                <option value="0">Disabled</option>
+                <option value="2"{% if post.status == 2 %} selected=""{% endif %}>Draft</option>
+                <option value="1"{% if post.status == 1 %} selected=""{% endif %}>Published</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="editor-title">Email:</label>
+            
+            <input id="form-title"  type="text" name="email" value="{{ post.email }}" class="form-control"/>
+        </div>
+    
+        <div class="form-group">
+            <label for="editor-title">Name:</label>
+            
+            <input id="form-title"  type="text" name="title" value="{{ post.title }}" class="form-control"/>
+        </div>
+        
+        <div class="form-group">
+            <label for="editor-content">Content:</label>
+            
+            <textarea id="form-content" name="content" class="form-control">{{ post.content }}</textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{{ path('admin_post_overview', {'pageIndex': 0}) }}" class="btn btn-default">Cancel</a>
+    </form>
+{% endblock %}

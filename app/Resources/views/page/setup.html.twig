@@ -1,0 +1,26 @@
+{##
+ # BlogSystem - Setup Template.
+ #
+ # @author      Andy Liebke <info@andysmiles4games.com>
+ # @version     0.1.0 28-Mar-16
+ # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
+ #}
+
+{% extends 'layout/base.html.twig' %}
+
+{% block inner_body %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Setup</div>
+        
+        <div class="panel-body">
+            In case you have copied this system just on your server, you have to prepare the database
+            to get ready to use this system. Just click on the install button and afterwards you
+            can start writing your new blog entries.
+        </div>
+        
+        <div class="panel-footer">
+            <a href="{{ path('homepage') }}" class="btn btn-default">Back</a>
+            <a href="{{ path('setup_install') }}" class="btn btn-default">Install</a>
+        </div>
+    </div>
+{% endblock %}

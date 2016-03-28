@@ -1,0 +1,33 @@
+{##
+ # BlogSystem - Login Template.
+ #
+ # @author      Andy Liebke <info@andysmiles4games.com>
+ # @version     0.3.0 27-Mar-16
+ # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
+ #}
+ 
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}
+    Please, sign in!
+{% endblock %}
+
+{% block inner_body %}
+    <h1>Login</h1>
+    
+    <form action="{{ path('homepage') }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+        
+        <div class="form-group">
+            <label for="form-login-email">Email:</label>
+            <input id="form-login-email" type="text" name="_username" placeholder="Your Email address!" class="form-control"/>
+        </div>
+        
+        <div class="form-group">
+            <label for="form-login-password">Password:</label>
+            <input id="form-login-password" type="password" name="_password" placeholder="Your Password" class="form-control"/>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+{% endblock %}

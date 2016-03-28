@@ -1,0 +1,69 @@
+{##
+ # BlogSystem - Blog Post Overview Template.
+ #
+ # @author      Andy Liebke <info@andysmiles4games.com>
+ # @version 	0.2.0 26-Mar-16
+ # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
+ #}
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block inner_body %}
+    <table class="table table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Is Active</th>
+                <th>Title</th>
+                <th>Last Update</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for curr_post in list_posts %}
+                <tr>
+                    <td>
+                        {% if curr_post.status == 1 %}
+                            PUBLISHED
+                        {% elseif curr_post.status == 2 %}
+                            DRAFT
+                        {% else %}
+                            DISABLED
+                        {% endif %}
+                    </td>
+                    
+                    <td>
+                        {{ curr_post.email }}
+                    </td>
+                    
+                    <td>
+                        {{ curr_post.title }}
+                    </td>
+                    
+                    <td>
+                        {{ curr_post.updatedAt }}
+                    </td>
+                    
+                    <td>
+                        <a href="{{ path('admin_post_edit', {'id': curr_post.id}) }}" class="btn btn-default">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        
+                        <a href="{{ path('admin_post_delete', {'id': curr_post.id}) }}" class="btn btn-danger">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        
+        {% if pagination.total > 10 %}
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        {{ include('widget/pagination.html.twig', {url_path: 'admin_post_overview'}) }}
+                    </td>
+                </tr>
+            </tfoot>
+        {% endif %}
+    </table>
+{% endblock %}
