@@ -19,11 +19,12 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $auth = $this->get('security.authentication_utils');
+        $security = $this->get('security.authorization_checker');
         
-        $listErrors = $auth->getLastAuthenticationError();
-        
-        /*var_dump($listErrors);*/
-        
-        return $this->render('page/login.html.twig', []);
+        if ($security->isGranted('IS_AUTHENTICATED_FULLY')){
+            return $this->redirectToRoute('admin_dashboard');
+        } else {
+            return $this->render('page/login.html.twig', []);
+        }
     }
 }
