@@ -47,11 +47,15 @@ class Overview extends Controller
                 
                 $entityManager->remove($post);
                 $entityManager->flush();
+                
+                $this->addFlash('success', 'Blog post "' . $post->getTitle() . '" was successfully removed!');
             } catch (Exception $e) {
                 $this->addFlash('error', $e->getMessage());
             }
         }
         
-        return $this->redirectToRoute('admin_post_overview');
+        return $this->redirectToRoute('admin_post_overview', [
+            'pageIndex' => 0
+        ]);
     }
 }

@@ -1,5 +1,5 @@
 {##
- # @version 	0.1.0 26-Mar-16
+ # @version 	0.2.0 27-Mar-16
  # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
  #}
 {% extends 'admin/layout/base.html.twig' %}
@@ -23,7 +23,13 @@
         </div>
     
         <div class="form-group">
-            <label for="editor-title">Title:</label>
+            <label for="editor-title">Email:</label>
+            
+            <input id="form-title"  type="text" name="email" value="{{ post.email }}" class="form-control"/>
+        </div>
+    
+        <div class="form-group">
+            <label for="editor-title">Name:</label>
             
             <input id="form-title"  type="text" name="title" value="{{ post.title }}" class="form-control"/>
         </div>
@@ -35,6 +41,6 @@
         </div>
         
         <button type="submit" class="btn btn-primary">Save</button>
-        <a href="{{ path('admin_post_overview') }}" class="btn btn-default">Cancel</a>
+        <a href="{{ path('admin_post_overview', {'pageIndex': 0}) }}" class="btn btn-default">Cancel</a>
     </form>
 {% endblock %}

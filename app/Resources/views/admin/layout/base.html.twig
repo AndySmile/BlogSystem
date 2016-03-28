@@ -45,7 +45,15 @@
     
     <div class="container">
         {% for curr_message in app.session.flashbag.get('error') %}
-            <div class="alert alert-danger">{{ curr_message }}</div> 
+            <div class="alert alert-danger">
+                <b>ERROR:</b> {{ curr_message }}
+            </div> 
+        {% endfor %}
+        
+        {% for curr_message in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                <b>SUCCESS:</b> {{ curr_message }}
+            </div> 
         {% endfor %}
         
         {% block inner_body %}{% endblock %}

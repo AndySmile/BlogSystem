@@ -2,9 +2,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @version     0.1.0 26-Mar-16
+ * @version     0.2.1 28-Mar-16
  * @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
  *
  * @ORM\Entity(repositoryClass="AppBundle\Entity\PostRepository")
@@ -17,6 +18,8 @@ class Post
     const STATUS_DRAFT = 2;
     
     /**
+     * 
+     *
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -29,11 +32,23 @@ class Post
     protected $status = 0;
     
     /**
+     * @Assert\NotBlank()
+     * @Assert\Email(message="Invalid email format!")
+     *
+     * @ORM\Column(type="string")
+     */
+    protected $email = '';
+    
+    /**
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string")
      */
     protected $title = '';
     
     /**
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string")
      */
     protected $content = '';
@@ -156,5 +171,28 @@ class Post
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Post
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }
