@@ -1,5 +1,5 @@
 {##
- # @version     0.3.0 27-Mar-16
+ # @version     0.4.0 28-Mar-16
  # @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
  #}
 <!DOCTYPE html>
@@ -22,6 +22,18 @@
     
     <body>
         {% block body %}
+            {% for curr_message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger">
+                    <b>ERROR:</b> {{ curr_message }}
+                </div> 
+            {% endfor %}
+            
+            {% for curr_message in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    <b>SUCCESS:</b> {{ curr_message }}
+                </div> 
+            {% endfor %}
+            
             <div class="container">
                 {% block inner_body %}{% endblock %}
             </div>
