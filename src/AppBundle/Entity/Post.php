@@ -5,6 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * BlogSystem - Blog Post Entity.
+ *
+ * @author      Andy Liebke <info@andysmiles4games.com>
  * @version     0.2.1 28-Mar-16
  * @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
  *
@@ -13,12 +16,23 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Post
 {
+    /** 
+     * Stores values for the disabled status.
+     */
     const STATUS_DISABLED = 0;
+    
+    /** 
+     * Stores values for the published status.
+     */
     const STATUS_PUBLISHED = 1;
+    
+    /** 
+     * Stores values for the draft status.
+     */
     const STATUS_DRAFT = 2;
     
     /**
-     * 
+     * Stores identification number of this blog post.
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -27,11 +41,15 @@ class Post
     protected $id = null;
     
     /**
+     * Stores status of this blog post.
+     *
      * @ORM\Column(type="integer")
      */
     protected $status = 0;
     
     /**
+     * Stores email address of this blog post.
+     *
      * @Assert\NotBlank()
      * @Assert\Email(message="Invalid email format!")
      *
@@ -40,6 +58,8 @@ class Post
     protected $email = '';
     
     /**
+     * Stores title of this blog post.
+     *
      * @Assert\NotBlank()
      *
      * @ORM\Column(type="string")
@@ -47,6 +67,8 @@ class Post
     protected $title = '';
     
     /**
+     * Stores content of this blog post.
+     *
      * @Assert\NotBlank()
      *
      * @ORM\Column(type="string")
@@ -54,15 +76,18 @@ class Post
     protected $content = '';
 
     /**
+     * Stores date of the last update in the database.
+     *
      * @ORM\Column(type="string", name="updated_at")
      */
     protected $updatedAt = null;
 
     /**
-     * Set id
+     * Assigns ID to this blog post.
      *
-     * @param integer $id
-     * @return Post
+     * @param int $id - identification number for this blog post
+     *
+     * @return Post - this instance
      */
     public function setId($id)
     {
@@ -72,9 +97,9 @@ class Post
     }
 
     /**
-     * Get id
+     * Returns identification number of this blog post.
      *
-     * @return integer 
+     * @return int - blog post ID 
      */
     public function getId()
     {
@@ -82,10 +107,11 @@ class Post
     }
 
     /**
-     * Set status.
+     * Assigns blog post status.
      *
-     * @param boolean $status
-     * @return Post
+     * @param int $status - blog post status
+     *
+     * @return Post - this instance
      */
     public function setStatus($status)
     {
@@ -95,9 +121,9 @@ class Post
     }
 
     /**
-     * Get isActive
+     * Returns status of this blog post.
      *
-     * @return boolean 
+     * @return int - blog post status 
      */
     public function getStatus()
     {
@@ -105,10 +131,11 @@ class Post
     }
 
     /**
-     * Set title
+     * Assigns a title to this blog post.
      *
-     * @param string $title
-     * @return Post
+     * @param string $title - blog post title
+     *
+     * @return Post - this instance
      */
     public function setTitle($title)
     {
@@ -118,9 +145,9 @@ class Post
     }
 
     /**
-     * Get title
+     * Returns title of this blog post.
      *
-     * @return string 
+     * @return string - title 
      */
     public function getTitle()
     {
@@ -128,10 +155,11 @@ class Post
     }
 
     /**
-     * Set content
+     * Assigns content to this blog post.
      *
-     * @param string $content
-     * @return Post
+     * @param string $content - content for this blog post
+     *
+     * @return Post - this instance
      */
     public function setContent($content)
     {
@@ -141,9 +169,9 @@ class Post
     }
 
     /**
-     * Get content
+     * Returns content of this blog post.
      *
-     * @return string 
+     * @return string - content of this blog post
      */
     public function getContent()
     {
@@ -151,22 +179,9 @@ class Post
     }
 
     /**
-     * Set createdAt
+     * Returns timestamp of the last update
      *
-     * @param integer $updatedAt
-     * @return Post
-     */
-    /*public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }*/
-
-    /**
-     * Get createdAt
-     *
-     * @return integer 
+     * @return int -timestamp when this blog post was updated  
      */
     public function getUpdatedAt()
     {
@@ -174,10 +189,11 @@ class Post
     }
 
     /**
-     * Set email
+     * Assigns email address to this blog post.
      *
-     * @param string $email
-     * @return Post
+     * @param string $email - email address
+     *
+     * @return Post - this instance
      */
     public function setEmail($email)
     {
@@ -187,9 +203,9 @@ class Post
     }
 
     /**
-     * Get email
+     * Returns email address of this blog post.
      *
-     * @return string 
+     * @return string - email address
      */
     public function getEmail()
     {

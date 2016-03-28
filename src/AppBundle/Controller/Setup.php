@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * BlogSystem - Setup Controller.
+ *
  * @author      Andy Liebke <info@andysmiles4games.com>
  * @version     0.2.0 26-Mar-16
  * @copyright   Copyright (c) 2016 by Andy Liebke. All rights reserved. (http://andysmiles4games.com)
@@ -13,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 final class Setup extends Controller
 {
     /**
-     * Performs install routines.
+     * Display the setup page.
      *
      * @param $request Request - request object
      *
@@ -25,6 +27,12 @@ final class Setup extends Controller
     }
     
     /**
+     * Performs install routines.
+     *
+     * @param $request Request - request object
+     *
+     * @return Response - redirection response to the setup display action
+     *
      * @Route("/setup/install", name="setup_install")
      */
     public function installAction(Request $request)
@@ -60,7 +68,6 @@ final class Setup extends Controller
         } catch (Exception $e) {
             $this->addFlash('error', $e->getMessage());
         }
-        
         
         return $this->redirectToRoute('setup');
     }
